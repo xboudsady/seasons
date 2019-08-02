@@ -1,23 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 
 class App extends React.Component {
-  constructor(props) {                                        // Creat our state, with two default properties
-    super(props);
 
-    // THIS IS THE ONLY TIME we do direct assignment
-    // to this.state
-    this.state = { lat: null, errorMessage: '' };
-
-    
-  }
+  state = { lat: null, errorMessage: '' };
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(          // Browser API to get geolocation via the windows object
-      position => this.setState({ lat: position.coords.latitude })
-      ,
+      position => this.setState({ lat: position.coords.latitude }),
       (err) => this.setState({ errorMessage: err.message })
-      
     );
   }
 
@@ -32,7 +24,7 @@ class App extends React.Component {
       }
       
       if (!this.state.errorMessage && this.state.lat) {           // If latitude is avaialable
-        return <div>Latitude: { this.state.lat }</div>
+        return <SeasonDisplay lat={ this.state.lat } />
       } 
       
       return <div>Loading!</div>                                  // Loading 
