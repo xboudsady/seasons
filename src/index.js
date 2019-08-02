@@ -14,13 +14,10 @@ class App extends React.Component {
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(          // Browser API to get geolocation via the windows object
-      (position) => {
-        // we called setState!!
-        this.setState({ lat: position.coords.latitude });
-      },
-      (err) => {                                              // Error catching as second argument
-        this.setState({ errorMessage: err.message })
-      }
+      position => this.setState({ lat: position.coords.latitude })
+      ,
+      (err) => this.setState({ errorMessage: err.message })
+      
     );
   }
 
