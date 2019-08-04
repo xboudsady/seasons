@@ -18,17 +18,26 @@ class App extends React.Component {
     console.log('My component was just updated - it rerendered.')
   }
 
+  renderContent() {
+    // If no latitude is available
+    if (this.state.errorMessage && !this.state.lat) {           
+      return <div>Error: { this.state.errorMessage } </div>
+    }
+    // If latitude is avaialable
+    if (!this.state.errorMessage && this.state.lat) {           
+      return <SeasonDisplay lat={ this.state.lat } />
+    } 
+    // Loading Screen
+    return <Spinner message="Please accept location request." />;
+  }
+
   // React says we have to define render!!
   render() {
-      if (this.state.errorMessage && !this.state.lat) {           // If no latitude is available
-        return <div>Error: { this.state.errorMessage } </div>
-      }
-      
-      if (!this.state.errorMessage && this.state.lat) {           // If latitude is avaialable
-        return <SeasonDisplay lat={ this.state.lat } />
-      } 
-      
-      return <Spinner message="Please accept location request." />;                                         // Loading Screen
+      return (
+        <div className="border red">
+          {this.renderContent()}
+        </div>
+      )
   }
 }
 
