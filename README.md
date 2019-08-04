@@ -15,4 +15,6 @@ See: [Web API Geo Location](https://developer.mozilla.org/en-US/docs/Web/API/Geo
 * [React](https://reactjs.org)
 * [Web APIs Geolocation](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation)
 
-App Screen Shot
+## App Screen Shot
+![App Image](https://github.com/xboudsady/seasons/blob/master/assets/app-screen.png)
+![Open Console](https://github.com/xboudsady/seasons/blob/master/assets/chrome-console.png)
