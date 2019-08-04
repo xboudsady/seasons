@@ -1,4 +1,6 @@
+import './SeasonDisplay.css';   // Load our CSS stylesheet for our icons
 import React from 'react';
+
 
 // Configuration Object -- to return string value to use in return calls
 const seasonConfig = {
@@ -23,19 +25,19 @@ const getSeason = (lat, month) => {
 };
 
 const SeasonDisplay = props => {
-  // Grab the string value, based on go location to determine season
+  // Grab the string value, based on go location to determine season of 'summer' or 'winter'
   const season = getSeason(props.lat, new Date().getMonth());
   
-  // Deconstruct our key name from object
+  // De-construct our key name from object
   const { text, iconName } = seasonConfig[season]  // Return our object with the { text, iconName }
 
 
   // If condition, to determine the value of the season variable from the getSesason()
   return (
-    <div>
-      <i className={`${iconName} icon`} />
+    <div className={`season-display ${season}`}>
+      <i className={`icon-left massive ${iconName} icon`} />
       <h1>{text}</h1>
-      <i className={`${iconName} icon`} />
+      <i className={`icon-right massive ${iconName} icon`} />
     </div>
   )
 };
